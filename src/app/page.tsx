@@ -3,15 +3,13 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import {
-  Bell,
-  ChevronDown,
   Moon,
   Sun,
   ArrowRight,
   CheckCircle,
   AlertCircle,
   Eye,
-  EyeOff
+  EyeOff,
 } from "lucide-react";
 
 interface HomeFormData {
@@ -36,14 +34,16 @@ const Home = () => {
   const [strengthScore, setStrengthScore] = useState(0);
 
   // Animated background patterns
-  const [patterns, setPatterns] = useState<Array<{ x: number; y: number; size: number; opacity: number }>>([]);
+  const [patterns, setPatterns] = useState<
+    Array<{ x: number; y: number; size: number; opacity: number }>
+  >([]);
 
   useEffect(() => {
     const newPatterns = Array.from({ length: 20 }, () => ({
       x: Math.random() * 100,
       y: Math.random() * 100,
       size: Math.random() * 30 + 10,
-      opacity: Math.random() * 0.2
+      opacity: Math.random() * 0.2,
     }));
     setPatterns(newPatterns);
   }, []);
@@ -83,7 +83,7 @@ const Home = () => {
     }
 
     // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    await new Promise((resolve) => setTimeout(resolve, 1500));
 
     // Store email in localStorage for persistence
     localStorage.setItem("userEmail", formData.email);
@@ -97,9 +97,10 @@ const Home = () => {
   };
 
   return (
-    <div className={`min-h-screen transition-colors duration-300 relative overflow-hidden
-      ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}>
-
+    <div
+      className={`min-h-screen transition-colors duration-300 relative overflow-hidden
+      ${isDarkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"}`}
+    >
       {/* Animated background patterns */}
       {patterns.map((pattern, index) => (
         <div
@@ -110,10 +111,10 @@ const Home = () => {
             top: `${pattern.y}%`,
             width: `${pattern.size}px`,
             height: `${pattern.size}px`,
-            background: isDarkMode ?
-              `rgba(59, 130, 246, ${pattern.opacity})` :
-              `rgba(219, 234, 254, ${pattern.opacity})`,
-            animation: `float ${Math.random() * 10 + 5}s infinite`
+            background: isDarkMode
+              ? `rgba(59, 130, 246, ${pattern.opacity})`
+              : `rgba(219, 234, 254, ${pattern.opacity})`,
+            animation: `float ${Math.random() * 10 + 5}s infinite`,
           }}
         />
       ))}
@@ -123,7 +124,11 @@ const Home = () => {
         onClick={() => setIsDarkMode(!isDarkMode)}
         className="absolute top-4 right-4 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
       >
-        {isDarkMode ? <Sun className="w-6 h-6" /> : <Moon className="w-6 h-6" />}
+        {isDarkMode ? (
+          <Sun className="w-6 h-6" />
+        ) : (
+          <Moon className="w-6 h-6" />
+        )}
       </button>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -131,7 +136,9 @@ const Home = () => {
           {/* Left side - Form */}
           <div className="w-full lg:w-1/2 max-w-md">
             <div className="mb-8 transform transition-all duration-500 hover:scale-105">
-              <div className="text-red-500 text-2xl font-bold mb-4 animate-pulse">Crypto</div>
+              <div className="text-red-500 text-2xl font-bold mb-4 animate-pulse">
+                Crypto
+              </div>
               <div className="flex items-center gap-2 mb-6">
                 <Image
                   src="/logo.jpg"
@@ -154,9 +161,11 @@ const Home = () => {
                   type="email"
                   placeholder="Email"
                   className={`w-full px-4 py-3 border rounded-lg transition-all duration-300
-                    ${isDarkMode ?
-                      'bg-gray-800 border-gray-700 text-white' :
-                      'bg-white border-gray-300 text-gray-900'}
+                    ${
+                      isDarkMode
+                        ? "bg-gray-800 border-gray-700 text-white"
+                        : "bg-white border-gray-300 text-gray-900"
+                    }
                     focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
                   value={formData.email}
                   onChange={(e) =>
@@ -165,7 +174,10 @@ const Home = () => {
                   required
                 />
                 {formData.email && (
-                  <CheckCircle className="absolute right-3 top-3 text-green-500" size={20} />
+                  <CheckCircle
+                    className="absolute right-3 top-3 text-green-500"
+                    size={20}
+                  />
                 )}
               </div>
 
@@ -175,9 +187,11 @@ const Home = () => {
                   type={showPassword ? "text" : "password"}
                   placeholder="Password"
                   className={`w-full px-4 py-3 border rounded-lg transition-all duration-300
-                    ${isDarkMode ?
-                      'bg-gray-800 border-gray-700 text-white' :
-                      'bg-white border-gray-300 text-gray-900'}
+                    ${
+                      isDarkMode
+                        ? "bg-gray-800 border-gray-700 text-white"
+                        : "bg-white border-gray-300 text-gray-900"
+                    }
                     focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
                   value={formData.password}
                   onChange={(e) => {
@@ -203,15 +217,18 @@ const Home = () => {
                       <div
                         key={score}
                         className={`h-2 w-full rounded-full transition-colors duration-300 ${
-                          score <= strengthScore ? 'bg-green-500' : 'bg-gray-200'
+                          score <= strengthScore
+                            ? "bg-green-500"
+                            : "bg-gray-200"
                         }`}
                       />
                     ))}
                   </div>
                   <p className="text-sm text-gray-500">
-                    Password strength: {
-                      ['Very Weak', 'Weak', 'Medium', 'Strong', 'Very Strong'][strengthScore - 1] || 'Very Weak'
-                    }
+                    Password strength:{" "}
+                    {["Very Weak", "Weak", "Medium", "Strong", "Very Strong"][
+                      strengthScore - 1
+                    ] || "Very Weak"}
                   </p>
                 </div>
               )}
@@ -277,7 +294,7 @@ const Home = () => {
                 disabled={loading}
                 className={`w-full flex items-center justify-center gap-2 py-3 rounded-lg
                   transition-all duration-300 transform hover:scale-105
-                  ${loading ? 'bg-gray-400' : 'bg-pink-400 hover:bg-pink-500'}
+                  ${loading ? "bg-gray-400" : "bg-pink-400 hover:bg-pink-500"}
                   text-white`}
               >
                 {loading ? (
@@ -311,13 +328,24 @@ const Home = () => {
 
       <style jsx>{`
         @keyframes float {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-20px); }
+          0%,
+          100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-20px);
+          }
         }
         @keyframes gradient {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
         }
         .animate-gradient {
           background-size: 200% auto;
@@ -327,9 +355,16 @@ const Home = () => {
           animation: spin 3s linear infinite;
         }
         @keyframes shake {
-          0%, 100% { transform: translateX(0); }
-          25% { transform: translateX(-5px); }
-          75% { transform: translateX(5px); }
+          0%,
+          100% {
+            transform: translateX(0);
+          }
+          25% {
+            transform: translateX(-5px);
+          }
+          75% {
+            transform: translateX(5px);
+          }
         }
         .animate-shake {
           animation: shake 0.5s ease-in-out;
