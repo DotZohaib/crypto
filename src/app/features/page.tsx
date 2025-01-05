@@ -1,6 +1,7 @@
 "use client"
 import React, { useEffect, useState } from "react";
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion, AnimatePresence } from "framer-motion";
 import { LineChart as LucideLineChart, BarChart, Activity, Bell, Wallet,
   PieChart, Shield, HeadphonesIcon,  ChevronDown,
@@ -167,7 +168,11 @@ const Features = () => {
   ];
 
   return (
-    <div className={`min-h-screen ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-gray-50'}`}>
+    <div
+      className={`min-h-screen ${
+        theme === "dark" ? "bg-gray-900 text-white" : "bg-gray-50"
+      }`}
+    >
       {/* Navigation */}
       <motion.nav
         className="sticky top-0 z-50 bg-white shadow-md"
@@ -182,7 +187,13 @@ const Features = () => {
                 whileHover={{ scale: 1.1, rotate: 360 }}
                 transition={{ duration: 0.5 }}
               >
-                <Image src="/public/logo.jpg" alt="Logo" className="rounded-full" width={50} height={50} />
+                <Image
+                  src="/public/logo.jpg"
+                  alt="Logo"
+                  className="rounded-full"
+                  width={50}
+                  height={50}
+                />
               </motion.div>
 
               <div className="hidden md:flex gap-6">
@@ -205,10 +216,12 @@ const Features = () => {
             <div className="flex items-center gap-6">
               <motion.button
                 whileHover={{ scale: 1.1 }}
-                onClick={() => setTheme(prev => prev === 'light' ? 'dark' : 'light')}
+                onClick={() =>
+                  setTheme((prev) => (prev === "light" ? "dark" : "light"))
+                }
                 className="p-2 rounded-full hover:bg-gray-100"
               >
-                {theme === 'light' ? '🌙' : '☀️'}
+                {theme === "light" ? "🌙" : "☀️"}
               </motion.button>
 
               <motion.div className="relative">
@@ -231,14 +244,16 @@ const Features = () => {
                       exit={{ opacity: 0, y: 10 }}
                       className="absolute right-0 mt-2 w-64 bg-white rounded-lg shadow-xl py-2"
                     >
-                      {marketAlerts.map(alert => (
+                      {marketAlerts.map((alert) => (
                         <motion.div
                           key={alert.id}
                           className="px-4 py-2 hover:bg-gray-50 cursor-pointer"
                           whileHover={{ x: 5 }}
                         >
                           <div className="font-semibold">{alert.title}</div>
-                          <div className="text-sm text-gray-600">{alert.message}</div>
+                          <div className="text-sm text-gray-600">
+                            {alert.message}
+                          </div>
                         </motion.div>
                       ))}
                     </motion.div>
@@ -251,7 +266,7 @@ const Features = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Trade Now
+                <Link href="/Main">Trade Now</Link>
               </motion.button>
             </div>
           </div>
@@ -274,7 +289,8 @@ const Features = () => {
             Next-Gen Trading Platform
           </motion.h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Experience professional-grade trading with advanced tools and real-time analytics
+            Experience professional-grade trading with advanced tools and
+            real-time analytics
           </p>
         </motion.div>
 
@@ -284,12 +300,37 @@ const Features = () => {
         {/* Features Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
           {[
-            { icon: <LucideLineChart size={32} />, title: "Advanced Charts", description: "Professional-grade charting with technical indicators" },
-            { icon: <Shield size={32} />, title: "Bank-Grade Security", description: "Multi-layer security with biometric authentication" },
-            { icon: <Zap size={32} />, title: "Instant Trades", description: "Lightning-fast execution with smart order routing" },
-            { icon: <Award size={32} />, title: "Rewards Program", description: "Earn while you trade with our loyalty program" },
-            { icon: <HeadphonesIcon size={32} />, title: "24/7 Support", description: "Round-the-clock customer support" },
-            { icon: <Wallet size={32} />, title: "Multi-Asset Wallet", description: "Secure storage for all your digital assets" }
+            {
+              icon: <LucideLineChart size={32} />,
+              title: "Advanced Charts",
+              description:
+                "Professional-grade charting with technical indicators",
+            },
+            {
+              icon: <Shield size={32} />,
+              title: "Bank-Grade Security",
+              description: "Multi-layer security with biometric authentication",
+            },
+            {
+              icon: <Zap size={32} />,
+              title: "Instant Trades",
+              description: "Lightning-fast execution with smart order routing",
+            },
+            {
+              icon: <Award size={32} />,
+              title: "Rewards Program",
+              description: "Earn while you trade with our loyalty program",
+            },
+            {
+              icon: <HeadphonesIcon size={32} />,
+              title: "24/7 Support",
+              description: "Round-the-clock customer support",
+            },
+            {
+              icon: <Wallet size={32} />,
+              title: "Multi-Asset Wallet",
+              description: "Secure storage for all your digital assets",
+            },
           ].map((feature, index) => (
             <FeatureCard
               key={index}
