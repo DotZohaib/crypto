@@ -1,42 +1,21 @@
-"use client"
+"use client";
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import {
-  LineChart as LucideLineChart,
-  BarChart,
-  Activity,
   Bell,
-  Lock,
-  Users,
-  Wallet,
-  PieChart,
-  Shield,
-  HeadphonesIcon,
-  Settings,
-  LogOut,
-  ChevronDown,
   Search,
-  Zap,
-  TrendingUp,
   DollarSign,
-  Award,
   Globe,
   Sun,
   Moon,
   Share2,
   BookOpen,
-  Calendar,
-  Clock,
   Gift,
-  Heart,
   Star,
-  Bookmark,
 } from "lucide-react";
-import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
+// import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import {
-  LineChart,
-  Line,
   XAxis,
   YAxis,
   Tooltip,
@@ -46,7 +25,14 @@ import {
 } from "recharts";
 
 // Enhanced Market Card Component
-const MarketCard = ({ symbol, price, change, volume }) => {
+interface MarketCardProps {
+  symbol: string;
+  price: number;
+  change: number;
+  volume: number;
+}
+
+const MarketCard: React.FC<MarketCardProps> = ({ symbol, price, change, volume }) => {
   const isPositive = change >= 0;
 
   return (
@@ -157,15 +143,15 @@ const PortfolioOverview = () => {
 
 // Enhanced Features Component
 const Main = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [theme, setTheme] = useState("light");
-  const [showNotifications, setShowNotifications] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [showSearch, setShowSearch] = useState(false);
 
   const marketData = [
-    { symbol: "BTC/USD", price: "45,123.45", change: 2.5, volume: 1234 },
-    { symbol: "ETH/USD", price: "3,123.45", change: -1.2, volume: 567 },
-    { symbol: "SOL/USD", price: "123.45", change: 5.6, volume: 890 },
+    { symbol: "BTC/USD", price: 45123.45, change: 2.5, volume: 1234 },
+    { symbol: "ETH/USD", price: 3123.45, change: -1.2, volume: 567 },
+    { symbol: "SOL/USD", price: 123.45, change: 5.6, volume: 890 },
   ];
 
   return (
@@ -366,3 +352,4 @@ const Main = () => {
 };
 
 export default Main;
+
