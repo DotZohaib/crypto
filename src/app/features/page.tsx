@@ -2,10 +2,10 @@
 import React, { useEffect, useState } from "react";
 import Image from 'next/image';
 import { motion, AnimatePresence } from "framer-motion";
-import { LineChart as LucideLineChart, BarChart, Activity, Bell, Lock, Users, Wallet,
-  PieChart, Shield, HeadphonesIcon, Settings, LogOut, ChevronDown,
-  Zap, TrendingUp, DollarSign, Award } from "lucide-react";
-import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
+import { LineChart as LucideLineChart, BarChart, Activity, Bell, Wallet,
+  PieChart, Shield, HeadphonesIcon,  ChevronDown,
+  Zap, TrendingUp,  Award } from "lucide-react";
+// import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
 // ... FeatureCardProps interface and FeatureCard component remain the same ...
@@ -153,6 +153,7 @@ const TradingStats = () => {
 const Features = () => {
   const [theme, setTheme] = useState("light");
   const [showNotifications, setShowNotifications] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [marketAlerts, setMarketAlerts] = useState([
     { id: 1, title: "BTC Alert", message: "Bitcoin breaks $45,000" },
     { id: 2, title: "ETH Alert", message: "Ethereum up 5% in last hour" }
